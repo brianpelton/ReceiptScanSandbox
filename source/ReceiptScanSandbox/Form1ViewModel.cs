@@ -1,6 +1,9 @@
 ﻿using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Imaging;
+using AForge.Imaging;
 using AForge.Imaging.Filters;
+using Image = System.Drawing.Image;
 
 namespace ReceiptScanSandbox
 {
@@ -11,6 +14,8 @@ namespace ReceiptScanSandbox
         public Form1ViewModel()
         {
             OptimizeSetting = 75;
+            EnableContrast = true;
+            EnableStraighten = true;
             PropertyChanged += Form1ViewModel_PropertyChanged;
         }
 
@@ -29,7 +34,10 @@ namespace ReceiptScanSandbox
             }
         }
 
+        public bool EnableAutoCrop { get; set; }
+        public bool EnableContrast { get; set; }
         public bool EnableOptimization { get; set; }
+        public bool EnableStraighten { get; set; }
         public int OptimizeSetting { get; set; }
         public Image OptimizedImage { get; set; }
         public Image OriginalImage { get; set; }
@@ -47,11 +55,49 @@ namespace ReceiptScanSandbox
 
         #region [ Methods ]
 
+        private Image ApplyAutoCrop(Image image)
+        {
+            var bitmapImage = (Bitmap) image.Clone();
+            return new ExtractBiggestBlob().Apply(bitmapImage);
+        }
+
+        private Image ApplyContrast(Image image)
+        {
+            var bitmapImage = (Bitmap) image.Clone();
+            var filter = new ContrastCorrection(OptimizeSetting);
+            return filter.Apply(bitmapImage);
+        }
+
+        private Image ApplyStraightening(Image image)
+        {
+            var bitmapImage = (Bitmap) image.Clone();
+            double angle = new DocumentSkewChecker().GetSkewAngle(EnsureGrayscale(bitmapImage));
+            var rotationFilter = new RotateBilinear(-angle) {FillColor = Color.Black};
+            return rotationFilter.Apply(bitmapImage);
+        }
+
+        private static Bitmap EnsureGrayscale(Bitmap source)
+        {
+            return source.PixelFormat == PixelFormat.Format8bppIndexed
+                ? source
+                : Grayscale.CommonAlgorithms.BT709.Apply(source);
+        }
+
         private void UpdateOptimizedImage()
         {
-            var image = (Bitmap) OriginalImage.Clone();
-            var filter = new ContrastCorrection(OptimizeSetting);
-            filter.ApplyInPlace(image);
+            if (OriginalImage == null)
+                return;
+
+            Image image = OriginalImage;
+
+            if (EnableContrast)
+                image = ApplyContrast(image);
+
+            if (EnableAutoCrop)
+                image = ApplyAutoCrop(image);
+
+            if (EnableStraighten)
+                image = ApplyStraightening(image);
 
             OptimizedImage = image;
         }
@@ -66,6 +112,9 @@ namespace ReceiptScanSandbox
             {
                 case "OriginalImage":
                 case "OptimizeSetting":
+                case "EnableContrast":
+                case "EnableStraighten":
+                case "EnableAutoCrop":
                     UpdateOptimizedImage();
                     break;
             }

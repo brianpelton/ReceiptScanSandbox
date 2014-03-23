@@ -35,8 +35,11 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.imageBox1 = new Cyotek.Windows.Forms.ImageBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkShowOptimizedImage = new System.Windows.Forms.CheckBox();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.chkContrast = new System.Windows.Forms.CheckBox();
+            this.chkStraighten = new System.Windows.Forms.CheckBox();
+            this.chkCrop = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,30 +108,63 @@
             this.imageBox1.Size = new System.Drawing.Size(374, 337);
             this.imageBox1.TabIndex = 6;
             // 
-            // checkBox1
+            // chkShowOptimizedImage
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(12, 186);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(98, 17);
-            this.checkBox1.TabIndex = 7;
-            this.checkBox1.Text = "Optimize Image";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkShowOptimizedImage.AutoSize = true;
+            this.chkShowOptimizedImage.Location = new System.Drawing.Point(12, 186);
+            this.chkShowOptimizedImage.Name = "chkShowOptimizedImage";
+            this.chkShowOptimizedImage.Size = new System.Drawing.Size(66, 17);
+            this.chkShowOptimizedImage.TabIndex = 7;
+            this.chkShowOptimizedImage.Text = "Optimize";
+            this.chkShowOptimizedImage.UseVisualStyleBackColor = true;
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(12, 209);
+            this.numericUpDown1.Location = new System.Drawing.Point(83, 232);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(63, 20);
             this.numericUpDown1.TabIndex = 8;
+            // 
+            // chkContrast
+            // 
+            this.chkContrast.AutoSize = true;
+            this.chkContrast.Location = new System.Drawing.Point(12, 235);
+            this.chkContrast.Name = "chkContrast";
+            this.chkContrast.Size = new System.Drawing.Size(65, 17);
+            this.chkContrast.TabIndex = 9;
+            this.chkContrast.Text = "Contrast";
+            this.chkContrast.UseVisualStyleBackColor = true;
+            // 
+            // chkStraighten
+            // 
+            this.chkStraighten.AutoSize = true;
+            this.chkStraighten.Location = new System.Drawing.Point(12, 258);
+            this.chkStraighten.Name = "chkStraighten";
+            this.chkStraighten.Size = new System.Drawing.Size(74, 17);
+            this.chkStraighten.TabIndex = 10;
+            this.chkStraighten.Text = "Straighten";
+            this.chkStraighten.UseVisualStyleBackColor = true;
+            // 
+            // chkCrop
+            // 
+            this.chkCrop.AutoSize = true;
+            this.chkCrop.Location = new System.Drawing.Point(12, 281);
+            this.chkCrop.Name = "chkCrop";
+            this.chkCrop.Size = new System.Drawing.Size(48, 17);
+            this.chkCrop.TabIndex = 11;
+            this.chkCrop.Text = "Crop";
+            this.chkCrop.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.chkCrop);
+            this.Controls.Add(this.chkStraighten);
+            this.Controls.Add(this.chkContrast);
             this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chkShowOptimizedImage);
             this.Controls.Add(this.imageBox1);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
@@ -153,8 +189,11 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button6;
         private Cyotek.Windows.Forms.ImageBox imageBox1;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkShowOptimizedImage;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.CheckBox chkContrast;
+        private System.Windows.Forms.CheckBox chkStraighten;
+        private System.Windows.Forms.CheckBox chkCrop;
     }
 }
 

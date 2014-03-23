@@ -35,7 +35,7 @@ namespace ReceiptScanSandbox
         {
             base.OnLoad(e);
 
-            checkBox1.BindData(BindingManager,
+            chkShowOptimizedImage.BindData(BindingManager,
                 ViewModel, s => s.EnableOptimization);
 
             imageBox1.BindData(BindingManager,
@@ -43,6 +43,15 @@ namespace ReceiptScanSandbox
 
             numericUpDown1.BindData(BindingManager,
                 ViewModel, s => s.OptimizeSetting);
+
+            chkContrast.BindData(BindingManager,
+                ViewModel, s => s.EnableContrast);
+
+            chkStraighten.BindData(BindingManager,
+                ViewModel, s => s.EnableStraighten);
+
+            chkCrop.BindData(BindingManager,
+                ViewModel, s => s.EnableAutoCrop);
         }
 
         #endregion
@@ -54,7 +63,7 @@ namespace ReceiptScanSandbox
             var dialog = new OpenFileDialog
             {
                 Multiselect = false,
-                Filter = "Image Files|*.jpeg"
+                Filter = "Image Files|*.jp*g"
             };
             DialogResult result = dialog.ShowDialog();
 
