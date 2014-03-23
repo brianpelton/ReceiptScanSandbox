@@ -1,0 +1,6 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=C48B536FA289C5478CCA830EDCD51283/AbsolutePath/@EntryValue">C:\dev\github\brianpelton\receiptscansandbox\source\ReSharperSettings.DotSettings</s:String>
+	<s:String x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=C48B536FA289C5478CCA830EDCD51283/RelativePath/@EntryValue">..\ReSharperSettings.DotSettings</s:String>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/FileInjectedLayer/=C48B536FA289C5478CCA830EDCD51283/@KeyIndexDefined">True</s:Boolean>
+	<s:Boolean x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=FileC48B536FA289C5478CCA830EDCD51283/@KeyIndexDefined">True</s:Boolean>
+	<s:Double x:Key="/Default/Environment/InjectedLayers/InjectedLayerCustomization/=FileC48B536FA289C5478CCA830EDCD51283/RelativePriority/@EntryValue">1</s:Double></wpf:ResourceDictionary>
