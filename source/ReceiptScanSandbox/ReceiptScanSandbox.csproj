@@ -41,6 +41,9 @@
     <Reference Include="AForge.Math">
       <HintPath>..\packages\AForge.Math.2.2.5\lib\AForge.Math.dll</HintPath>
     </Reference>
+    <Reference Include="CommonWin32">
+      <HintPath>..\packages\CommonWin32.2.0.3\lib\net35-Client\CommonWin32.dll</HintPath>
+    </Reference>
     <Reference Include="Cyotek.Windows.Forms.ImageBox">
       <HintPath>..\packages\CyotekImageBox.1.1.4.2\lib\net20\Cyotek.Windows.Forms.ImageBox.dll</HintPath>
     </Reference>
@@ -49,6 +52,9 @@
     </Reference>
     <Reference Include="MvvmFx.Windows.WinForms">
       <HintPath>..\packages\MvvmFx-WinForms.2.0.2\lib\net40\MvvmFx.Windows.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="NTwain">
+      <HintPath>..\packages\NTwain.0.7.3\lib\net40-client\NTwain.dll</HintPath>
     </Reference>
     <Reference Include="PropertyChanged">
       <HintPath>..\packages\PropertyChanged.Fody.1.47.0.0\Lib\NET35\PropertyChanged.dll</HintPath>
@@ -84,6 +90,7 @@
     <Compile Include="Form1ViewModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScanHelper.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

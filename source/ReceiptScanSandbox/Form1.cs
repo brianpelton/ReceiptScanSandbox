@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 using MvvmFx.Windows.Data;
 
@@ -18,6 +19,7 @@ namespace ReceiptScanSandbox
 
             ViewModel = new Form1ViewModel();
             BindingManager = new BindingManager();
+            ScannerHelper = new ScanHelper(this);
         }
 
         #endregion
@@ -25,6 +27,7 @@ namespace ReceiptScanSandbox
         #region [ Properties ]
 
         private BindingManager BindingManager { get; set; }
+        private ScanHelper ScannerHelper { get; set; }
         private Form1ViewModel ViewModel { get; set; }
 
         #endregion
@@ -58,6 +61,18 @@ namespace ReceiptScanSandbox
 
         #region [ Event Handlers ]
 
+        private void ScannerHelper_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "ScannedImage")
+                ViewModel.OriginalImage = ScannerHelper.ScannedImage;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ScannerHelper.StartCapture();
+            ScannerHelper.PropertyChanged += ScannerHelper_PropertyChanged;
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             var dialog = new OpenFileDialog
@@ -71,6 +86,19 @@ namespace ReceiptScanSandbox
                 return;
 
             ViewModel.OpenImage(dialog.FileName);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ScannerHelper.SetupTwain();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ScannerHelper.ReloadScanners();
+
+            ScannerHelper.SelectedScanner =
+                ScannerHelper.Scanners.Last();
         }
 
         #endregion
